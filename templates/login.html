@@ -1,0 +1,37 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %} customer Login {% endblock %}
+
+
+{% block start %}
+<style>
+    .errorlist{
+        color: red;
+    }
+</style>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6 mx-auto">
+            <h3>Customer Login Form</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-primary">Login</button>
+                {% if error %}
+                 <li style="color: red;">{{error}}</li>
+                 {% endif %}
+
+
+            </form>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
