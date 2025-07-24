@@ -1,0 +1,45 @@
+
+{% extends 'base.html' %}
+
+{% block title %} order detail {% endblock %}
+
+{% block start %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h3>Order Detail</h3>
+             <p><span>Order ID: </span> {{order_obj.id}}</p>
+              <p><span>Order_Status: </span> {{order_obj.order_status}}</p>
+               <p><span>Order_On: </span> {{order_obj.created_at}}</p>
+               <p><span>shipping_Information: </span> {{order_obj.shipping_address}}, {{order_obj.order_by}}</p>
+               <p><span>mobile: </span> {{order_obj.mobile}}, {{order_obj.email}}</p>
+               <h3>Order Items</h3>
+               <table class="table">
+                <tr>
+                    <th>S.N</th>
+                    <th>Item</th>
+                    <th>Rate</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+                {% for cp in order_obj.cart.cartproduct_set.all %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{cp.product.title}}</td>
+                    <td>{{cp.rate}}</td>
+                    <td>{{cp.quantity}}</td>
+                    <td>{{cp.subtotal}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th colspan="4" class="text-right">Total: </th>
+                    <th>{{order_obj.total}}</th>
+                </tr>
+               </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

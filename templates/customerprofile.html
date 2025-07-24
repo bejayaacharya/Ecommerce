@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block title %} customer profile {% endblock %}
+
+{%block start %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Detail Information</h3>
+            <p><span>Name: </span> {{customer.full_name}}</p>
+            <p><span>Username: </span>{{customer.user.username}}</p>
+            <p><span>Email: </span> {{customer.user.email}}</p>
+            <p><span>Address: </span> {{customer.address}}</p>
+            <p><span>Joined_on: </span>{{customer.joined_on}}</p>
+        </div>
+        <div class="col-md-8">
+            <h3>Previous orders</h3>
+            <table class="table">
+                <tr>
+                <th>S.N</th>
+                <th>Order ID</th>
+                <th>Amount</th>
+                <th>Order On</th>
+                <th>Status</th>
+                </tr>
+                {% for order in orders %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td> <a href="{% url 'ecomapp:orderdetail' order.id %}">#ORDER {{order.id}}</a></td>
+                    <td>{{order.total}}</td>
+                    <td>{{order.created_at}}</td>
+                    <td>{{order.order_status}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

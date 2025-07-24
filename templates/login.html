@@ -26,6 +26,7 @@
 
 
             </form>
+            <p>dont have an account? <a href="{% url 'ecomapp:customerregister' %} {% if request.GET.next %}?next={{request.GET.next}} {% endif %}">Register</a></p>
 
 
         </div>

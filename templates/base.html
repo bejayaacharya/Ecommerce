@@ -14,12 +14,23 @@
      <a href="{% url 'ecomapp:allproduct' %}">Categories</a> |
      <a href="{% url 'ecomapp:mycart' %}">View Cart</a>| 
      {% if request.user.customer %}
-     welcome{{request.user.username}}!
+     welcome {{request.user.username}}!
+     <a href="{% url 'ecomapp:customerprofile' %}">My Profile</a>|
      <a href="{%url 'ecomapp:logout' %}">Logout</a>
      {% else %}
      <a href="{% url 'ecomapp:customerregister' %}">Register</a>|
      <a href="{%  url 'ecomapp:login' %}">Login</a>
      {% endif %}
+     </div>
+     <div class="container">
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <form action="{% url 'ecomapp:search' %}" method="GET" style="text-align: right;">
+                    <input type="text" name="keyword" placeholder="serach here">
+                    <button class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
      </div>
     <hr>
     

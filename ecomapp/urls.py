@@ -18,6 +18,14 @@ urlpatterns=[
     path('register/',CustomerRegisterView.as_view(),name='customerregister'),
     path('logout/',LogoutView.as_view(),name='logout'),
     path('login/',LoginView.as_view(), name='login'),
+    path('profile/',CustomerProfileView.as_view(), name='customerprofile'),
+    path('profile/order/<int:pk>/',CustomerOrderDetailView.as_view(), name='orderdetail'),
+    path('admin-login/',AdminLoginView.as_view(), name='adminlogin'),
+    path('admin-home/',AdminHomeView.as_view(), name='adminhome'),
+    path('admin-order/<int:pk>/',AdminOrderDetailView.as_view(), name='adminorderdetail'),
+    path('admin-all-orders/',AdminAllOrdersView.as_view(), name='allorders'),
+    path('admin-orderstatus/<int:pk>/',AdminOrderStatusView.as_view(), name='adminorderstatus'),
+    path('search/',SearchView.as_view(), name='search'),
 
 ]
 
